@@ -1,0 +1,24 @@
+#GET
+GET http://localhost:4004/odata/v4/employee/Employee
+
+###POST
+POST http://localhost:4004/odata/v4/employee/Employee
+Content-Type: application/json
+
+{
+    "name_firstName" : "Asley",
+    "name_lastName" : "Rake",
+    "dob" : "1997-05-23",
+    "isPermanent" : true,
+    "salary" : 4000,
+    "joiningDate" : "2021-03-18",
+    "status" : "ACTIVE",
+    "profilePhoto": "photo",
+    "address_City": "Pune",
+    "address_State": "Chattisgarh",
+    "address_ZipCode": 730162,
+    "projects": 2
+}
+
+###DELETE
+DELETE http://localhost:4004/odata/v4/employee/Employee/b9b67f08-aed5-4a27-9eb6-e497162dae61
