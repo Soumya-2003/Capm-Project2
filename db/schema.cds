@@ -18,8 +18,8 @@ type Address : {
            when trim(City) = '' then 'City must not be empty'
            end);
     State : String(30) @assert:(
-      case when State is null then
-      'State should be mentioned in the address' end);
+           case when State is null then
+           'State should be mentioned in the address' end);
     ZipCode : Int64 @assert.range: {
       $value : [100000,999999],
       message : 'Zip Code must be 6 digits'
@@ -36,14 +36,14 @@ entity Employee{
       message: 'Salary must be greater than 1000' 
     };
   joiningDate : Date;
-  status : EmploymentStatus;
+  status : EmploymentStatus default 'INACTIVE';
   profilePhoto : Binary;
   address : Address;
   profile : String = employeeId || ' is ' || status;
   type : String = case
-  when isPermanent = true then '🟢'
-  else '🔴'
-  end;
+    when isPermanent = true then '🟢'
+    else '🔴'
+    end;
   projects : Integer @assert.range:[0,100];
 
 }
