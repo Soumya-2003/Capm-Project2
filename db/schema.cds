@@ -8,7 +8,7 @@ type EmploymentStatus : String enum {
 
 type Name : {
   firstName : String(20) @mandatory @assert : (case
-           when trim(firstName) = '' then 'City must not be empty'
+           when trim(firstName) = '' then 'First Name must not be empty'
            end);
   lastName : String(20) default 'NA';
 }
@@ -39,11 +39,29 @@ entity Employee{
   status : EmploymentStatus default 'INACTIVE';
   profilePhoto : Binary;
   address : Address;
+  department : Association to Department;
   profile : String = employeeId || ' is ' || status;
   type : String = case
     when isPermanent = true then '🟢'
     else '🔴'
     end;
-  projects : Integer @assert.range:[0,100];
-
+  // projects : array of String;
+  projects : Composition of many EmployeeProject
+              on projects.employee = $self;
 }
+
+entity Department {
+  key deptId : UUID;
+  name       : String(50) @mandatory;
+  location   : String(50);
+}
+
+entity EmployeeProject {
+  key ID        : UUID;
+  employee      : Association to Employee;
+  projectName   : String(50);
+  startDate     : Date;
+  endDate       : Date;
+}
+
+
