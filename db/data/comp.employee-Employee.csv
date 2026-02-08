@@ -1,3 +1,3 @@
-employeeId,name_firstName,name_lastName,dob,isPermanent,salary,joiningDate,status,address_City,address_State,address_ZipCode,projects
-550e8400-e29b-41d4-a716-446655440000,Soumyadeep,Mallick,1998-06-12,true,85000.50,2023-01-10,ACTIVE,Bangalore,Karnataka,560001, 7
-6fa459ea-ee8a-3ca4-894e-db77e160355e,Anita,Roy,1995-03-25,false,65000.00,2022-07-01,INACTIVE,Kolkata,West Bengal,700016,16
+employeeId,name_firstName,name_lastName,dob,isPermanent,salary,joiningDate,status,address_City,address_State,address_ZipCode,department_deptId
+31355418-5bad-4a58-98d2-eb7fea13ab34,firstName-31355418,lastName-31355418,2017-07-06,true,9608883201221.91,2018-03-28,ACTIVE,City-31355418,State-31355418,100000,24497365-78e0-4cdc-b16b-959a20b437e7
+31355419-0efa-443f-b7b6-d05aee66354e,firstName-31355419,lastName-31355419,2016-03-10,false,4091811156066.96,2015-06-20,TERMINATED,City-31355419,State-31355419,100000,24497365-78e0-4cdc-b16b-959a20b437e7
