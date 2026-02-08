@@ -6,19 +6,39 @@ POST http://localhost:4004/odata/v4/employee/Employee
 Content-Type: application/json
 
 {
-    "name_firstName" : "Asley",
-    "name_lastName" : "Rake",
-    "dob" : "1997-05-23",
-    "isPermanent" : true,
-    "salary" : 4000,
-    "joiningDate" : "2021-03-18",
-    "status" : "ACTIVE",
-    "profilePhoto": "photo",
-    "address_City": "Pune",
-    "address_State": "Chattisgarh",
-    "address_ZipCode": 730162,
-    "projects": 2
+  "name_firstName": "Soumyadeep",
+  "name_lastName": "Mallick",
+  "dob": "1998-06-12",
+  "isPermanent": true,
+  "salary": 85000,
+  "joiningDate": "2023-01-10",
+  "status": "ACTIVE",
+  "address_City": "Bangalore",
+  "address_State": "Karnataka",
+  "address_ZipCode": 560001,
+
+  "department_deptId": "24497365-78e0-4cdc-b16b-959a20b437e7",
+
+  "projects": [
+    {
+      "projectName": "CAP Migration",
+      "startDate": "2023-02-01"
+    },
+    {
+      "projectName": "S/4 Integration",
+      "startDate": "2024-01-10"
+    }
+  ]
 }
 
 ###DELETE
-DELETE http://localhost:4004/odata/v4/employee/Employee/b9b67f08-aed5-4a27-9eb6-e497162dae61
+DELETE http://localhost:4004/odata/v4/employee/Employee/34dd21ff-de27-41ed-8d08-b91fde41e920
+
+###CREATE NEW DEPARTMENT
+POST  http://localhost:4004/odata/v4/department/Departments
+Content-Type: application/json
+
+{
+  "name": "Engineering",
+  "location": "Bangalore"
+}
