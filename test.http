@@ -1,21 +1,24 @@
 #GET
-GET http://localhost:4004/odata/v4/employee/Employee
+GET http://localhost:4004/odata/v4/employee/Employee?$expand=department,profileDetail,projects
 
 ###POST
 POST http://localhost:4004/odata/v4/employee/Employee
 Content-Type: application/json
 
 {
-  "name_firstName": "Soumyadeep",
-  "name_lastName": "Mallick",
-  "dob": "1998-06-12",
-  "isPermanent": true,
-  "salary": 85000,
-  "joiningDate": "2023-01-10",
-  "status": "ACTIVE",
-  "address_City": "Bangalore",
-  "address_State": "Karnataka",
+  "name_firstName": "Rima",
+  "name_lastName": "Jaiswal",
+  "dob": "1995-06-12",
+  "isPermanent": false,
+  "salary": 31000,
+  "joiningDate": "2018-07-13",
+  "address_City": "Chennai",
+  "address_State": "Tamil Nadu",
   "address_ZipCode": 560001,
+  "profileDetail": {
+    "bio": "Backend Developer",
+    "linkedinUrl": "https://linkedin.com/in/demo5"
+  },
 
   "department_deptId": "24497365-78e0-4cdc-b16b-959a20b437e7",
 
@@ -31,14 +34,50 @@ Content-Type: application/json
   ]
 }
 
-###DELETE
-DELETE http://localhost:4004/odata/v4/employee/Employee/34dd21ff-de27-41ed-8d08-b91fde41e920
-
-###CREATE NEW DEPARTMENT
-POST  http://localhost:4004/odata/v4/department/Departments
+###PUT
+PUT http://localhost:4004/odata/v4/employee/Employee/49741401-fee5-473a-a6b8-e38f696d8405
 Content-Type: application/json
 
 {
-  "name": "Engineering",
-  "location": "Bangalore"
+  "salary" : 50000
 }
+
+###DELETE
+DELETE http://localhost:4004/odata/v4/employee/Employee/13fd0026-209e-43ff-ae90-83dddc011212
+
+
+
+###GET ALL DEPARTMENTS
+GET http://localhost:4004/odata/v4/employee/Departments
+
+###CREATE NEW DEPARTMENT
+POST http://localhost:4004/odata/v4/employee/Departments
+Content-Type: application/json
+
+{
+  "name": "Global Logistics & Supply",
+  "location": "Chicago - North Hub"
+}
+
+###
+DELETE http://localhost:4004/odata/v4/employee/Departments/8491043d-10a4-4cf0-aa39-f6e00f1654c8
+
+
+### Testing View1
+GET http://localhost:4004/odata/v4/employee/PermanentEmployees
+
+### Testing View2
+GET http://localhost:4004/odata/v4/employee/PermanentEmployeesBySalary(minSalary=82000)/Set
+
+
+###Testing Unbounded Function
+GET http://localhost:4004/odata/v4/employee/getPermanentEmployees()
+
+###Testing Bounded Function
+GET http://localhost:4004/odata/v4/employee/Employee(f6e6e091-4b39-4333-945f-879107781f20)/getTotalProjects()
+
+###Testing Unbounded Action
+POST http://localhost:4004/odata/v4/employee/deactivateEmployees
+
+###Testing Bounded Action
+POST http://localhost:4004/odata/v4/employee/EmployeeProjects(936f95b3-cf78-4b3a-8413-6db9550aaa7a)/endProject
