@@ -43,7 +43,7 @@ Content-Type: application/json
 }
 
 ###DELETE
-DELETE http://localhost:4004/odata/v4/employee/Employee/13fd0026-209e-43ff-ae90-83dddc011212
+DELETE http://localhost:4004/odata/v4/employee/Employee/3960b76d-09a3-4f00-9507-41d4abd67027
 
 
 
@@ -74,10 +74,10 @@ GET http://localhost:4004/odata/v4/employee/PermanentEmployeesBySalary(minSalary
 GET http://localhost:4004/odata/v4/employee/getPermanentEmployees()
 
 ###Testing Bounded Function
-GET http://localhost:4004/odata/v4/employee/Employee(f6e6e091-4b39-4333-945f-879107781f20)/getTotalProjects()
+GET http://localhost:4004/odata/v4/employee/Employee(3506f2ff-aa1d-4f19-ad8e-e09e6a5d4a55)/getTotalProjects()
 
 ###Testing Unbounded Action
 POST http://localhost:4004/odata/v4/employee/deactivateEmployees
 
 ###Testing Bounded Action
-POST http://localhost:4004/odata/v4/employee/EmployeeProjects(936f95b3-cf78-4b3a-8413-6db9550aaa7a)/endProject
+POST http://localhost:4004/odata/v4/employee/EmployeeProjects(25a566b1-7856-4b78-811c-590697a49c78)/endProject
