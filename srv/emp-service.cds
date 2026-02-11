@@ -2,11 +2,14 @@ using comp.employee as emp from '../db/schema';
 
 service EmployeeService {
     
-    entity Employee as projection on emp.Employee excluding{profilePhoto};
+    // entity Employee as projection on emp.Employee excluding{profilePhoto};
 
-    // entity Departments as projection on emp.Department;
+    entity Departments as projection on emp.Department;
 
     entity Skills as projection on emp.Skill;
+
+    @cds.redirection.target
+    entity Projects as projection on emp.EmployeeProject;
 
     // View1
     // view PermanentEmployees as SELECT from emp.Employee{
@@ -38,9 +41,9 @@ service EmployeeService {
     function getPermanentEmployees() returns array of String;
 
     // Bounded Function
-    // entity Employee as projection on emp.Employee actions {
-    //     function getTotalProjects() returns Integer;
-    // }
+    entity Employee as projection on emp.Employee actions {
+        function getTotalProjects() returns Integer;
+    }
 
     // Unbounded Action
     action deactivateEmployees();
