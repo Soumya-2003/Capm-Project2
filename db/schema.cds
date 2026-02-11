@@ -1,7 +1,7 @@
 namespace comp.employee;
 using { managed } from '@sap/cds/common';
 
-aspect Auditable : managed {
+aspect EmployeeList : managed {
   status : EmploymentStatus default 'INACTIVE';
 }
 
@@ -35,7 +35,7 @@ type Address : {
     };
 };
 
-entity Employee : Auditable {
+entity Employee : EmployeeList {
   key employeeId : UUID;
   name : Name;
   dob: Date;
