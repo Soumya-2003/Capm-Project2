@@ -8,6 +8,8 @@ service EmployeeService {
 
     entity Skills as projection on emp.Skill;
 
+    entity Profile as projection on emp.EmployeeProfile;
+
     @cds.redirection.target
     entity Projects as projection on emp.EmployeeProject;
 
@@ -34,6 +36,12 @@ service EmployeeService {
     // } where isPermanent = true and salary >= :minSalary;
 
 
+    type EmployeeSearchResult {
+        employeeId : UUID;
+        name : String;
+        salary : Decimal;
+    }
+    function searchEmployees(query : String) returns array of EmployeeSearchResult;
     // entity ActiveProjects as projection on ActiveEmployeeProjects;
 
     // entity EmployeesByDept as projection on EmployeesByDepartment;
@@ -52,4 +60,39 @@ service EmployeeService {
     entity EmployeeProjects as projection on emp.EmployeeProject actions {
         action endProject() returns Boolean;
     }
+
+    // Get salary in descending order using orderBy
+    function getEmployeesBySalary() returns array of EmployeeSearchResult;
+
+    type DeptEmployeeCount{
+        deptId : UUID;
+        totalEmployees : Integer
+    }
+
+    // Get Departments having more than two employees using GROUP BY
+    function employeesPerDepartment() returns array of DeptEmployeeCount;
+
+
+    // INNER JOIN - Employees with Department
+    type empWithDept{
+        empId : UUID;
+        name : String;
+        department : String; 
+    }
+
+    function employeeWithDepartment() returns array of empWithDept;
+
+
+    // LEFT JOIN - GET Emplpoyees with project
+    type Status : String enum{
+        ONGOING;
+        COMPLETED;
+    }
+    type empProjectInfo {
+    employeeId  : UUID;
+    name        : String;
+    projectName : String;
+    status     : Status;
+    }
+    function employeesWithProjects() returns array of empProjectInfo;
 }
