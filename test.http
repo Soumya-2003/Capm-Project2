@@ -6,44 +6,44 @@ POST http://localhost:4004/odata/v4/employee/Employee
 Content-Type: application/json
 
 {
-  "name_firstName": "Rima",
-  "name_lastName": "Jaiswal",
-  "dob": "1995-06-12",
-  "isPermanent": false,
-  "salary": 31000,
-  "joiningDate": "2018-07-13",
-  "address_City": "Chennai",
-  "address_State": "Tamil Nadu",
-  "address_ZipCode": 560001,
+  "name_firstName": "Harry2",
+  "name_lastName": "Potter2",
+  "dob": "1992-10-03",
+  "isPermanent": true,
+  "salary": 75000,
+  "joiningDate": "2021-03-23",
+  "address_City": "Dehradun",
+  "address_State": "Uttarakhan",
+  "address_ZipCode": 560291,
   "profileDetail": {
-    "bio": "Backend Developer",
-    "linkedinUrl": "https://linkedin.com/in/demo5"
+    "bio": "Professional Lawyer",
+    "linkedinUrl": "https://linkedin.com/in/demo7"
   },
 
-  "department_deptId": "24497365-78e0-4cdc-b16b-959a20b437e7",
+  "department_deptId": "80060098-16c5-4b43-b25a-3faa4e1198ce"
 
-  "projects": [
-    {
-      "projectName": "CAP Migration",
-      "startDate": "2023-02-01"
-    },
-    {
-      "projectName": "S/4 Integration",
-      "startDate": "2024-01-10"
-    }
-  ]
+  
 }
 
-###PUT
-PUT http://localhost:4004/odata/v4/employee/Employee/49741401-fee5-473a-a6b8-e38f696d8405
+# "projects": [
+#     {
+#       "projectName": "Movie Recommendation System",
+#       "startDate": "2023-02-01",
+#       "endDate": "2025-04-04"
+#     }
+#   ]
+
+###PUT, Update Employee Records
+PUT http://localhost:4004/odata/v4/employee/Employee/f38134fc-c46c-46bd-977f-2fe32ebc9675
 Content-Type: application/json
 
 {
-  "salary" : 50000
+  "salary" : 100000,
+  "address_State" : "Uttarakhand"
 }
 
-###DELETE
-DELETE http://localhost:4004/odata/v4/employee/Employee/3960b76d-09a3-4f00-9507-41d4abd67027
+###DELETE EMPLOYEE
+DELETE http://localhost:4004/odata/v4/employee/Employee/b0b6e57d-ab62-42a7-8641-37c38b2bba1f
 
 
 
@@ -59,7 +59,7 @@ Content-Type: application/json
   "location": "Chicago - North Hub"
 }
 
-###
+### DELETE DEPARTMENT
 DELETE http://localhost:4004/odata/v4/employee/Departments/8491043d-10a4-4cf0-aa39-f6e00f1654c8
 
 
@@ -79,5 +79,23 @@ GET http://localhost:4004/odata/v4/employee/Employee(3506f2ff-aa1d-4f19-ad8e-e09
 ###Testing Unbounded Action
 POST http://localhost:4004/odata/v4/employee/deactivateEmployees
 
-###Testing Bounded Action
-POST http://localhost:4004/odata/v4/employee/EmployeeProjects(25a566b1-7856-4b78-811c-590697a49c78)/endProject
+###Testing Bounded Action, End ongoing project
+POST http://localhost:4004/odata/v4/employee/EmployeeProjects(cf310f22-9918-4cdd-858c-b2a2347dc031)/endProject
+
+
+
+### GET Employee Search Result
+GET http://localhost:4004/odata/v4/employee/searchEmployees(query='75000')
+
+### GET Employee Order by Salary in DESCENDING ORDER
+GET http://localhost:4004/odata/v4/employee/getEmployeesBySalary
+
+
+### GET Departments having more than two employees using GROUP BY
+GET http://localhost:4004/odata/v4/employee/employeesPerDepartment
+
+### GET INNER JOIN - Employees with Department
+GET http://localhost:4004/odata/v4/employee/employeeWithDepartment
+
+### LEFT JOIN - GET Emplpoyees with project
+GET http://localhost:4004/odata/v4/employee/employeesWithProjects
