@@ -11,15 +11,10 @@ type EmploymentStatus : String enum {
     TERMINATED;
 };
 
-@assert.unique : {
-  test : [ firstName, lastName ]
-}
 
 type Name : {
-  firstName : String(20) @mandatory @assert : (case
-           when trim(firstName) = '' then 'First Name must not be empty'
-           end);
-  lastName : String(20) default 'NA';
+  firstName : String(20);
+  lastName : String(20);
 }
 
 type Address : {
@@ -35,6 +30,9 @@ type Address : {
     };
 };
 
+@assert.unique : {
+  test : [ Name ]
+}
 entity Employee : EmployeeList {
   key employeeId : UUID;
   name : Name;
