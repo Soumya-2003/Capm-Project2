@@ -143,7 +143,7 @@ module.exports = cds.service.impl((srv) => {
     });
 
 
-    // Get Departments having more than two employees using GROUP BY
+    // Get Departments having more than one employee using GROUP BY
     srv.on('employeesPerDepartment', async(req) => {
       return SELECT.from('comp.employee.Employee')
              .columns(
@@ -192,11 +192,33 @@ module.exports = cds.service.impl((srv) => {
           }
 
           return {
-              employeeId  : row.employeeId,
-              name        : `${row.name_firstName} ${row.name_lastName}`,
+              employeeId : row.employeeId,
+              name : `${row.name_firstName} ${row.name_lastName}`,
               projectName : row.projectName || 'No Project Assigned',
-              status      : projectStatus
+              status : projectStatus
           };
       });
+    });
+
+
+    // RIGHT JOIN - GET ongoing projects with employee name sorted by start date
+    srv.on('activeProjects', async (req) => {
+        const rows = await SELECT.from('comp.employee.EmployeeProject as Project')
+            .rightJoin('comp.employee.Employee as Emp')
+            .on('Project.employee_employeeId = Emp.employeeId')
+            .columns(
+                'Project.projectName',
+                'Project.startDate',
+                'Project.endDate',
+                'Emp.name_firstName',
+                'Emp.name_lastName'
+            ).where('Project.endDate is null') 
+             .orderBy('Project.startDate asc');
+
+        return rows.map(row => ({
+            projectName : row.projectName || 'No Active Project',
+            startDate : row.startDate,
+            employeeName : `${row.name_firstName} ${row.name_lastName}`
+        }));
     });
 });
