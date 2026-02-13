@@ -30,9 +30,9 @@ type Address : {
     };
 };
 
-@assert.unique : {
-  test : [ Name ]
-}
+// @assert.unique : {
+//   test : [ Name ]
+// }
 entity Employee : EmployeeList {
   key employeeId : UUID;
   name : Name;
@@ -43,7 +43,6 @@ entity Employee : EmployeeList {
       message: 'Salary must be greater than 1000' 
     };
   joiningDate : Date;
-  // status : EmploymentStatus default 'INACTIVE';
   profilePhoto : Binary;
   address : Address;
   profileDetail : Composition of EmployeeProfile
