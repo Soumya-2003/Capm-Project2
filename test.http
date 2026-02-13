@@ -6,23 +6,26 @@ POST http://localhost:4004/odata/v4/employee/Employee
 Content-Type: application/json
 
 {
-  "name_firstName": "Harry2",
-  "name_lastName": "Potter2",
-  "dob": "1992-10-03",
+  "name_firstName": "Allan",
+  "name_lastName": "Border",
+  "dob": "1982-09-13",
   "isPermanent": true,
-  "salary": 75000,
-  "joiningDate": "2021-03-23",
-  "address_City": "Dehradun",
-  "address_State": "Uttarakhan",
-  "address_ZipCode": 560291,
+  "salary": 95000,
+  "joiningDate": "2014-07-16",
+  "address_City": "Lucknow",
+  "address_State": "UP",
+  "address_ZipCode": 820943,
   "profileDetail": {
-    "bio": "Professional Lawyer",
-    "linkedinUrl": "https://linkedin.com/in/demo7"
+    "bio": "Proven track record in reducing external security attacks",
+    "linkedinUrl": "https://linkedin.com/in/allan-border"
   },
-
-  "department_deptId": "80060098-16c5-4b43-b25a-3faa4e1198ce"
-
-  
+  "department_deptId": "80060101-7c65-46db-a27d-baed52a68b2d",
+  "projects": [
+    {
+      "projectName": "DIY Hovercraft",
+      "startDate": "2017-07-04"
+    }
+  ]  
 }
 
 # "projects": [
@@ -43,7 +46,7 @@ Content-Type: application/json
 }
 
 ###DELETE EMPLOYEE
-DELETE http://localhost:4004/odata/v4/employee/Employee/b0b6e57d-ab62-42a7-8641-37c38b2bba1f
+DELETE http://localhost:4004/odata/v4/employee/Employee/1e3692a6-e473-468d-8828-fe5e9a41db86
 
 
 
@@ -87,9 +90,10 @@ POST http://localhost:4004/odata/v4/employee/EmployeeProjects(cf310f22-9918-4cdd
 ### GET Employee Search Result
 GET http://localhost:4004/odata/v4/employee/searchEmployees(query='75000')
 
+
+
 ### GET Employee Order by Salary in DESCENDING ORDER
 GET http://localhost:4004/odata/v4/employee/getEmployeesBySalary
-
 
 ### GET Departments having more than two employees using GROUP BY
 GET http://localhost:4004/odata/v4/employee/employeesPerDepartment
@@ -99,3 +103,6 @@ GET http://localhost:4004/odata/v4/employee/employeeWithDepartment
 
 ### LEFT JOIN - GET Emplpoyees with project
 GET http://localhost:4004/odata/v4/employee/employeesWithProjects
+
+### RIGHT JOIN - GET ongoing projects with employee name sorted by start date
+GET http://localhost:4004/odata/v4/employee/activeProjects
