@@ -95,4 +95,13 @@ service EmployeeService {
     status     : Status;
     }
     function employeesWithProjects() returns array of empProjectInfo;
+
+
+    // RIGHT JOIN - GET ongoing projects with employee name sorted by start date
+    type activeProjectInfo {
+        projectName : String;
+        startDate   : Date;
+        employeeName : String;
+    }
+    function activeProjects() returns array of activeProjectInfo;
 }
