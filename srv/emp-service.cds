@@ -36,6 +36,7 @@ service EmployeeService {
     // } where isPermanent = true and salary >= :minSalary;
 
 
+
     type EmployeeSearchResult {
         employeeId : UUID;
         name : String;
@@ -104,4 +105,17 @@ service EmployeeService {
         employeeName : String;
     }
     function activeProjects() returns array of activeProjectInfo;
+
+
+    // FULL OUTER JOIN - Employees with or without projects also Projects with or without employees
+    type FullJoinResult {
+        employeeId  : UUID;
+        name : String;
+        projectName : String;
+    }
+
+    function employeesAndProjectsFullJoin() returns array of FullJoinResult;
+
+
+
 }
