@@ -9,6 +9,7 @@ Content-Type: application/json
   "name_firstName": "Allan",
   "name_lastName": "Border",
   "dob": "1982-09-13",
+  "phoneNumber": 8998899889,
   "isPermanent": true,
   "salary": 95000,
   "joiningDate": "2014-07-16",
@@ -23,7 +24,8 @@ Content-Type: application/json
   "projects": [
     {
       "projectName": "DIY Hovercraft",
-      "startDate": "2017-07-04"
+      "startDate": "2017-07-04",
+      "endDate": "2020-05-01"
     }
   ]  
 }
@@ -46,8 +48,7 @@ Content-Type: application/json
 }
 
 ###DELETE EMPLOYEE
-DELETE http://localhost:4004/odata/v4/employee/Employee/1e3692a6-e473-468d-8828-fe5e9a41db86
-
+DELETE http://localhost:4004/odata/v4/employee/Employee/4b0cc3c9-b14a-4a2a-bb5c-0aa188ff0f68
 
 
 ###GET ALL DEPARTMENTS
@@ -83,7 +84,7 @@ GET http://localhost:4004/odata/v4/employee/Employee(3506f2ff-aa1d-4f19-ad8e-e09
 POST http://localhost:4004/odata/v4/employee/deactivateEmployees
 
 ###Testing Bounded Action, End ongoing project
-POST http://localhost:4004/odata/v4/employee/EmployeeProjects(cf310f22-9918-4cdd-858c-b2a2347dc031)/endProject
+POST http://localhost:4004/odata/v4/employee/EmployeeProjects(626b51fc-10f6-43b2-84d4-cfd675e6187e)/endProject
 
 
 
@@ -106,3 +107,10 @@ GET http://localhost:4004/odata/v4/employee/employeesWithProjects
 
 ### RIGHT JOIN - GET ongoing projects with employee name sorted by start date
 GET http://localhost:4004/odata/v4/employee/activeProjects
+
+### Full Oyter Join - Employees with or without projects also Projects with or without employees
+GET http://localhost:4004/odata/v4/employee/employeesAndProjectsFullJoin
+
+
+###getting result from a Context
+http://localhost:4004/odata/v4/company/Valuations
