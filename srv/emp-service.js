@@ -8,7 +8,17 @@ module.exports = cds.service.impl((srv) => {
     // Before Create
 	  srv.before('CREATE', 'Employee', async(req)=>{
         console.log('Checking Request Validation...Please Wait!'); 
-        const { joiningDate, department_deptId } = req.data;
+        const { dob, joiningDate, department_deptId } = req.data;
+
+        const birthDate = new Date(dob);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+
+        if(monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())){
+          age--;
+        }
+        req.data.age = age;
 
         if(joiningDate && new Date(joiningDate) > new Date()){
           req.error(400, 'Joining date cannot be in future');
@@ -221,4 +231,24 @@ module.exports = cds.service.impl((srv) => {
             employeeName : `${row.name_firstName} ${row.name_lastName}`
         }));
     });
+
+
+    // Full OUter Join - Employees with or without projects also Projects with or without employees
+    srv.on('employeesAndProjectsFullJoin', async () => {
+
+      const db = await cds.connect.to('db');
+
+      const query = `
+        SELECT Emp.employeeId AS employeeId,
+        Emp.name_firstName AS employeeName,
+        Project.projectName AS projectName
+        FROM comp_employee_Employee Emp
+        FULL OUTER JOIN comp_employee_EmployeeProject Project
+        ON Emp.employeeId = Project.employee_employeeId
+      `;
+
+      const result = await db.run(query);
+      return result;
+    });
+
 });
