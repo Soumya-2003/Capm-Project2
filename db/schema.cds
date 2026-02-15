@@ -33,10 +33,17 @@ type Address : {
 // @assert.unique : {
 //   test : [ Name ]
 // }
+@assert.unique: { 
+  test : [ phoneNumber ] 
+}
+
+
 entity Employee : EmployeeList {
   key employeeId : UUID;
   name : Name;
   dob: Date;
+  age : Integer;
+  phoneNumber : Integer64;
   isPermanent : Boolean;
   salary : Decimal(15,2) @assert.range: { 
       $value : [(1000),_],
