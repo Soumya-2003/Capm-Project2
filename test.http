@@ -6,28 +6,28 @@ POST http://localhost:4004/odata/v4/employee/Employee
 Content-Type: application/json
 
 {
-  "name_firstName": "Allan",
-  "name_lastName": "Border",
-  "dob": "1982-09-13",
-  "phoneNumber": 8998899889,
-  "isPermanent": true,
-  "salary": 95000,
-  "joiningDate": "2014-07-16",
-  "address_City": "Lucknow",
-  "address_State": "UP",
-  "address_ZipCode": 820943,
+  "name_firstName": "Test",
+  "name_lastName": "User",
+  "dob": "2003-06-19",
+  "phoneNumber": 8695483443,
+  "isPermanent": false,
+  "salary": 17000,
+  "joiningDate": "2025-11-24",
+  "address_City": "Burdwan",
+  "address_State": "WB",
+  "address_ZipCode": 713146,
   "profileDetail": {
     "bio": "Proven track record in reducing external security attacks",
-    "linkedinUrl": "https://linkedin.com/in/allan-border"
+    "linkedinUrl": "https://linkedin.com/in/test-user"
   },
-  "department_deptId": "80060101-7c65-46db-a27d-baed52a68b2d",
+  "department_deptId": "4ed82435-24ae-4a02-9a83-f73697b9d055",
   "projects": [
     {
-      "projectName": "DIY Hovercraft",
+      "projectName": "Project100",
       "startDate": "2017-07-04",
       "endDate": "2020-05-01"
     }
-  ]  
+  ]
 }
 
 # "projects": [
@@ -39,16 +39,35 @@ Content-Type: application/json
 #   ]
 
 ###PUT, Update Employee Records
-PUT http://localhost:4004/odata/v4/employee/Employee/f38134fc-c46c-46bd-977f-2fe32ebc9675
+PUT http://localhost:4004/odata/v4/employee/Employee/43925078-3f2f-4a9b-b33c-a042c64518a6
 Content-Type: application/json
 
 {
-  "salary" : 100000,
-  "address_State" : "Uttarakhand"
+  "profileDetail": {
+    "bio": "Using tools like BLAST, Bioconductor, and Bowtie",
+    "linkedinUrl": "https://linkedin.com/in/harry-porter"
+  }
 }
 
 ###DELETE EMPLOYEE
-DELETE http://localhost:4004/odata/v4/employee/Employee/4b0cc3c9-b14a-4a2a-bb5c-0aa188ff0f68
+DELETE http://localhost:4004/odata/v4/employee/Employee/4e0a3f88-3c06-4e14-9259-ae29afa1ffd3
+
+### ADD Skills
+POST http://localhost:4004/odata/v4/employee/Skills
+Content-Type: application/json
+
+{
+  "name": "Skill200"
+}
+
+### Map employee to skills
+POST http://localhost:4004/odata/v4/employee/EmployeeSkills
+Content-Type: application/json
+
+{
+  "employee_employeeId": "61dbb88c-68e8-4ba0-a2c3-74ed40d3aa66",
+  "skill_skillId": "7f55c424-b300-46ca-98de-71d9b71beb15"
+}
 
 
 ###GET ALL DEPARTMENTS
@@ -113,4 +132,14 @@ GET http://localhost:4004/odata/v4/employee/employeesAndProjectsFullJoin
 
 
 ###getting result from a Context
-http://localhost:4004/odata/v4/company/Valuations
+GET http://localhost:4004/odata/v4/company/Valuations
+
+###
+# POST http://localhost:4004/odata/v4/company/Valuations
+# Content-Type: application/json
+
+# {
+#         "Company Name" : "Cloud FOundy",
+#         "Number Of Clients" : 60,
+#         "Market Revenue" : 7600046.53
+# }
