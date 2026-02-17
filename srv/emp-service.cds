@@ -8,6 +8,8 @@ service EmployeeService {
 
     entity Skills as projection on emp.Skill;
 
+    entity EmployeeSkills as projection on emp.EmployeeSkill;
+
     entity Profile as projection on emp.EmployeeProfile;
 
     @cds.redirection.target
