@@ -48,7 +48,7 @@ service EmployeeService {
     // entity ActiveProjects as projection on ActiveEmployeeProjects;
 
     // entity EmployeesByDept as projection on EmployeesByDepartment;
-    // Unbounded Function
+    // Unbound Function
     function getPermanentEmployees() returns array of String;
 
     // Bounded Function
