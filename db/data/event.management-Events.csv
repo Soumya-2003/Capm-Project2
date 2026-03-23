@@ -1,5 +1,5 @@
-eventId,eventName,description,eventDate,startTime,endTime,venue,maxParticipants,registrations
-91990892-9418-4bdc-be5b-d2bfd4a7dca8,AI Innovation Summit,Conference discussing enterprise AI adoption and real world use cases,2026-07-20,09:00:00,17:00:00,Bangalore Convention Center,150,Open
-91990908-d0e1-440d-8d69-e06881188464,Cloud Technology Workshop,Hands-on workshop covering cloud native development and microservices,2026-08-05,10:00:00,16:00:00,Virtual Event,80,Closed
-b1f74a66-6c37-4f8e-8e57-2e9c7f5c9912,Team Building Retreat,Outdoor team activities designed to improve collaboration and leadership,2026-09-15,08:30:00,18:00:00,Goa Beach Resort,60,Open
-c8a4f9de-5e6a-4b4d-9e9a-6f7e3d2c1a55,SAP Developer Meetup,Community meetup for developers to discuss SAP technologies and best practices,2026-07-30,14:00:00,19:00:00,Hyderabad Tech Hub,120,Closed
+eventId,eventName,description,eventDate,startTime,endTime,free,venue,maxParticipants,registrations,rating,organizer_name,organizer_contact,organizer_bio
+91990892-9418-4bdc-be5b-d2bfd4a7dca8,AI Innovation Summit,Conference discussing enterprise AI adoption and real world use cases,2026-07-20,09:00:00,17:00:00,false,Bangalore Convention Center,150,Open,8,John Doe,987654321,AI Strategy Expert
+91990908-d0e1-440d-8d69-e06881188464,Cloud Technology Workshop,Hands-on workshop covering cloud native development and microservices,2026-08-05,10:00:00,16:00:00,true,Virtual Event,80,Closed,5,Jane Smith,876543210,Cloud Solutions Architect
+b1f74a66-6c37-4f8e-8e57-2e9c7f5c9912,Team Building Retreat,Outdoor team activities designed to improve collaboration and leadership,2026-09-15,08:30:00,18:00:00,false,Goa Beach Resort,60,Open,9,Rahul Varma,765432109,HR Specialist
+c8a4f9de-5e6a-4b4d-9e9a-6f7e3d2c1a55,SAP Developer Meetup,Community meetup for developers to discuss SAP technologies and best practices,2026-07-30,14:00:00,19:00:00,true,Hyderabad Tech Hub,120,Closed,7,Sarah Connor,654321098,SAP Champion
