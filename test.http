@@ -108,7 +108,7 @@ POST http://localhost:4004/odata/v4/employee/EmployeeProjects(626b51fc-10f6-43b2
 
 
 ### GET Employee Search Result
-GET http://localhost:4004/odata/v4/employee/searchEmployees(query='75000')
+GET http://localhost:4004/odata/v4/employee/searchEmployees(query='Test')
 
 
 
