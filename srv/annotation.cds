@@ -10,9 +10,9 @@ annotate EventService.Event with {
 
 annotate EventService.Event with @UI.LineItem: [
     { Value: eventName },
-    { Value: venue , Label: 'Venue' },
-    { Value: maxParticipants , Label: 'Total Registrations'},
-    { Value: status, Label: 'Status' }
+    { Value: venue },
+    { Value: maxParticipants },
+    { Value: status }
 ];
 
 annotate EventService.Event with @UI.SelectionFields: [
@@ -22,7 +22,7 @@ annotate EventService.Event with @UI.SelectionFields: [
 annotate EventService.Event with @UI.HeaderInfo: {
     TypeName: 'Event',
     TypeNamePlural: 'Events',
-    TypeImageUrl  : 'sap-icon://building',
+    TypeImageUrl  : 'https://woocommerce.com/wp-content/uploads/2025/09/host-meetup.jpg',
     Title: {$Type: 'UI.DataField', Value: eventName },
     Description: { $Type: 'UI.DataField', Value: venue }
 };
