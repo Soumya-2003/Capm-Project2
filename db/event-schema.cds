@@ -20,7 +20,6 @@ entity Events {
       maxParticipants : Integer @Common.FieldControl: #Optional;
       registrations   : String @Common.FieldControl: #ReadOnly;
       budget          : Decimal(15,2) @Measures.ISOCurrency: currency_code;
-      
       currency_code : String(3) @Common.FieldControl: #Optional;
       currency : Association to Currencies on currency.code=currency_code;
       rating : Integer @Common.FieldControl: #Optional;
