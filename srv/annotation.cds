@@ -1,41 +1,48 @@
 using {EventService} from './event-service';
 
 annotate EventService.Event with {
-    eventName       @Common.Label: 'Event Name';
-    eventDate       @Common.Label: 'Event Date';
-    startTime       @Common.Label: 'Start Time';
-    endTime         @Common.Label: 'End Time';
-    venue           @Common.Label: 'Venue';
-    free            @Common.Label: 'Free';
-    description     @Common.Label: 'Description';
-    maxParticipants @Common.Label: 'Total Registrations';
-    status          @Common.Label: 'Status';
-    rating          @Common.Label: 'Rating';
+    eventName       @Common.Label       : 'Event Name';
+    eventDate       @Common.Label       : 'Event Date';
+    startTime       @Common.Label       : 'Start Time';
+    endTime         @Common.Label       : 'End Time';
+    venue           @Common.Label       : 'Venue';
+    free            @Common.Label       : 'Free';
+    description     @Common.Label       : 'Description';
+    maxParticipants @Common.Label       : 'Total Registrations';
+    status          @Common.Label       : 'Status';
+    rating          @Common.Label       : 'Rating';
     budget          @Common.Label: 'Budget';
-    organizer      @(
+    // budget          @Aggregation.default: #SUM;
+    organizer       @(
         Common.SemanticObject: 'Organizer',
         Common.Label         : 'Organizer Details'
     );
 };
 
+
 annotate EventService.Event with @(UI: {
-    LineItem: {
-        ![@UI.Criticality]: criticality, 
-        $value: [
-            { Value: eventName },
-            { Value: venue },
-            { Value: maxParticipants },
-            { Value: free },
-            { Value: budget }
+    LineItem           : {
+        ![@UI.Criticality]: criticality,
+        $value            : [
+            {Value: eventName},
+            {Value: venue},
+            {Value: maxParticipants},
+            {Value: free},
+            {Value: budget}
         ]
     },
 
     PresentationVariant: {
         $Type         : 'UI.PresentationVariantType',
-        Visualizations: [@UI.LineItem],
-        RequestAtLeast: [criticality] 
+        Visualizations: ['@UI.LineItem'],
+        RequestAtLeast: [criticality],
+        Total         : [{
+            $Type   : 'UI.AggregationType',
+            Property: budget
+        }]
     }
 });
+
 
 annotate EventService.Event with {
     brochure     @Core.MediaType                  : mimeType;
@@ -273,10 +280,10 @@ annotate EventService.EventTags with {
 };
 
 annotate EventService.Event with {
-    currency @Common: {
+    currency_code @Common: {
         Label                   : 'Currency',
         Text                    : currency.name,
-        TextArrangement         : #TextOnly,
+        TextArrangement         : #TextFirst,
         ValueListWithFixedValues: true,
         ValueList               : {
             CollectionPath: 'Currencies',
@@ -289,6 +296,10 @@ annotate EventService.Event with {
                 {
                     $Type            : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty: 'name'
+                },
+                {
+                    $Type            : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty: 'symbol'
                 }
             ]
         }
