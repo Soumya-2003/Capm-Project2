@@ -30,7 +30,7 @@ entity Events {
       brochureName    : String @Common.FieldControl: #Optional;
       mimeType : String @Common.FieldControl: #Optional;
 
-      virtual status : String;
+      status : String @Core.Computed;
       criticality : Integer @Core.Computed;
 }
 

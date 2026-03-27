@@ -22,12 +22,12 @@ annotate EventService.Event with {
 
 annotate EventService.Event with @(UI: {
     LineItem           : {
-        ![@UI.Criticality]: criticality,
+        // ![@UI.Criticality]: criticality,
         $value            : [
             {Value: eventName},
             {Value: venue},
             {Value: maxParticipants},
-            {Value: status},
+            // {Value: status},
             {Value: free},
             {Value: budget}
         ]
@@ -43,6 +43,9 @@ annotate EventService.Event with @(UI: {
         }]
     }
 });
+
+
+annotate EventService.Event with @odata.draft.bypass;
 
 
 annotate EventService.Event with {

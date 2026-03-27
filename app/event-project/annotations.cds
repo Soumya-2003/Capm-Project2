@@ -61,6 +61,6 @@ annotate service.Event with @(
             @UI.Importance : #High,
         },
     ],
-    UI.LineItem.@UI.Criticality : criticality,
+    UI.LineItem.@UI.Criticality : criticality
 );
 
