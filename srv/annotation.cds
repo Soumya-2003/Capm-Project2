@@ -27,6 +27,7 @@ annotate EventService.Event with @(UI: {
             {Value: eventName},
             {Value: venue},
             {Value: maxParticipants},
+            {Value: status},
             {Value: free},
             {Value: budget}
         ]
