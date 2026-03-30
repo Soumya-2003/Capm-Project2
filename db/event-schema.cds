@@ -8,7 +8,7 @@ type Organizer {
 
 entity Events {
   key eventId : UUID;
-      eventName       : String(150) @Common.FieldControl: #Mandatory;
+      eventName       : String(150) @Common.FieldControl: #Mandatory ;
       description     : String(500) @Common.FieldControl: #Optional;
       eventDate       : Date @Common.FieldControl: #Mandatory;
       startTime       : Time @Common.FieldControl: #Mandatory;

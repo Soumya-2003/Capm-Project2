@@ -19,6 +19,30 @@ annotate EventService.Event with {
     );
 };
 
+annotate EventService.Event with @UI.Chart #EventChart: {
+    ChartType : #Column,
+    Measures  : [budget],
+    Dimensions: [eventName],
+
+    MeasureAttributes: [{
+        Measure: budget,
+        Role   : #Axis1
+    }],
+
+    DimensionAttributes: [{
+        Dimension: eventName,
+        Role     : #Category
+    }]
+};
+
+annotate EventService.Event with @Aggregation.ApplySupported: {
+    Transformations: ['aggregate', 'groupby'],
+    GroupableProperties: [eventName],
+    AggregatableProperties: [{
+        Property: budget
+    }]
+};
+
 
 annotate EventService.Event with @(UI: {
     LineItem           : {
@@ -45,7 +69,7 @@ annotate EventService.Event with @(UI: {
 });
 
 
-annotate EventService.Event with @odata.draft.bypass;
+// annotate EventService.Event with @odata.draft.bypass;
 
 
 annotate EventService.Event with {
@@ -165,11 +189,13 @@ annotate EventService.Event with @UI.Facets: [
         $Type : 'UI.ReferenceFacet',
         Label : 'General Information',
         Target: '@UI.FieldGroup#General'
+        // ![@UI.PartOfPreview]: false
     },
     {
         $Type : 'UI.ReferenceFacet',
         Label : 'Schedule',
         Target: '@UI.FieldGroup#Schedule'
+        // ![@UI.PartOfPreview]: false
     }
 ];
 
@@ -224,7 +250,7 @@ annotate EventService.Event with @UI.FieldGroup #General: {
             Value: tags.tag,
             Label: 'Tags'
         },
-        {Value: budget}
+        {Value: budget, ![@UI.PartOfPreview]: false}
     ]
 };
 

@@ -50,7 +50,9 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.fe.templates": {},
-        "sap.f": {}
+        "sap.f": {},
+        "sap.fe.macros": {},
+        "sap.fe.core": {}
       }
     },
     "contentDensities": {
@@ -91,6 +93,13 @@
       },
       "routes": [
         {
+          "pattern": "overview",
+          "name": "OverviewPage",
+          "target": [
+            "OverviewPage"
+          ]
+        },
+        {
           "pattern": ":?query:",
           "name": "EventList",
           "target": [
@@ -116,6 +125,18 @@
         }
       ],
       "targets": {
+        "OverviewPage": {
+          "type": "Component",
+          "id": "OverviewPage",
+          "name": "sap.fe.core.fpm",
+          "controlAggregation": "beginColumnPages",
+          "options": {
+            "settings": {
+              "viewName": "eventproject.view.OverviewPage",
+              "contextPath": "/Event"
+            }
+          }
+        },
         "EventList": {
           "type": "Component",
           "id": "EventList",
