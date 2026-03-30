@@ -43,13 +43,14 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.146.0",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.fe.templates": {}
+        "sap.fe.templates": {},
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -81,22 +82,37 @@
       "css": []
     },
     "routing": {
-      "config": {},
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
       "routes": [
         {
           "pattern": ":?query:",
           "name": "EventList",
-          "target": "EventList"
+          "target": [
+            "EventList"
+          ]
         },
         {
           "pattern": "Event({key}):?query:",
           "name": "EventObjectPage",
-          "target": "EventObjectPage"
+          "target": [
+            "EventList",
+            "EventObjectPage"
+          ]
         },
         {
           "pattern": "Event({key})/tags({key2}):?query:",
           "name": "EventTagsObjectPage",
-          "target": "EventTagsObjectPage"
+          "target": [
+            "EventList",
+            "EventObjectPage",
+            "EventTagsObjectPage"
+          ]
         }
       ],
       "targets": {
@@ -104,6 +120,7 @@
           "type": "Component",
           "id": "EventList",
           "name": "sap.fe.templates.ListReport",
+          "controlAggregation": "beginColumnPages",
           "options": {
             "settings": {
               "contextPath": "/Event",
@@ -125,12 +142,14 @@
                 }
               }
             }
-          }
+          },
+          "contextPattern": ""
         },
         "EventObjectPage": {
           "type": "Component",
           "id": "EventObjectPage",
           "name": "sap.fe.templates.ObjectPage",
+          "controlAggregation": "midColumnPages",
           "options": {
             "settings": {
               "editableHeaderContent": false,
@@ -143,7 +162,8 @@
                 }
               }
             }
-          }
+          },
+          "contextPattern": "/Event({key})"
         },
         "EventTagsObjectPage": {
           "type": "Component",
@@ -154,9 +174,17 @@
               "editableHeaderContent": false,
               "contextPath": "/Event/tags"
             }
-          }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/Event({key})/tags({key2})"
         }
       }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
     }
   },
   "sap.fiori": {
