@@ -130,9 +130,11 @@
           "id": "OverviewPage",
           "name": "sap.fe.core.fpm",
           "controlAggregation": "beginColumnPages",
+          "viewLevel": 1,
           "options": {
             "settings": {
               "viewName": "eventproject.view.OverviewPage",
+              "viewType": "XML",
               "contextPath": "/Event"
             }
           }

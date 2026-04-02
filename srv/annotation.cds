@@ -19,29 +19,29 @@ annotate EventService.Event with {
     );
 };
 
-annotate EventService.Event with @UI.Chart #EventChart: {
-    ChartType : #Column,
-    Measures  : [budget],
-    Dimensions: [eventName],
+// annotate EventService.Event with @UI.Chart #EventChart: {
+//     ChartType : #Column,
+//     Measures  : [budget],
+//     Dimensions: [eventName],
 
-    MeasureAttributes: [{
-        Measure: budget,
-        Role   : #Axis1
-    }],
+//     MeasureAttributes: [{
+//         Measure: budget,
+//         Role   : #Axis1
+//     }],
 
-    DimensionAttributes: [{
-        Dimension: eventName,
-        Role     : #Category
-    }]
-};
+//     DimensionAttributes: [{
+//         Dimension: eventName,
+//         Role     : #Category
+//     }]
+// };
 
-annotate EventService.Event with @Aggregation.ApplySupported: {
-    Transformations: ['aggregate', 'groupby'],
-    GroupableProperties: [eventName],
-    AggregatableProperties: [{
-        Property: budget
-    }]
-};
+// annotate EventService.Event with @Aggregation.ApplySupported: {
+//     Transformations: ['aggregate', 'groupby'],
+//     GroupableProperties: [eventName],
+//     AggregatableProperties: [{
+//         Property: budget
+//     }]
+// };
 
 
 annotate EventService.Event with @(UI: {
@@ -69,7 +69,7 @@ annotate EventService.Event with @(UI: {
 });
 
 
-// annotate EventService.Event with @odata.draft.bypass;
+annotate EventService.Event with @odata.draft.bypass;
 
 
 annotate EventService.Event with {

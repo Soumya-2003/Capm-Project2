@@ -1,27 +1,22 @@
 <mvc:View
+    controllerName="eventproject.controller.OverviewPage"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:macros="sap.fe.macros"
-    xmlns="sap.m">
+    xmlns="sap.m"
+>
+    <Page>
+        <VBox height="400px">
+            <macros:Table
+                id="EventTable"
+                metaPath="@com.sap.vocabularies.UI.v1.LineItem"
+                contextPath="/Event"
+            />
+        </VBox>
 
-    <macros:Page id="OverviewPage">
+        <Button
+            text="Click Me"
+            press="clickMeButtonPress"
+        />
 
-    <VBox class="sapUiSmallMargin">
-
-        <Title text="Event Overview Dashboard" level="H2" />
-
-        <!-- Table -->
-        <macros:Table
-            id="EventTable"
-            metaPath="@com.sap.vocabularies.UI.v1.LineItem"
-            contextPath="/Event" />
-
-        <!-- Chart -->
-        <macros:Chart
-            id="EventChart"
-            metaPath="@com.sap.vocabularies.UI.v1.Chart#EventChart"
-            contextPath="/Event" />
-
-    </VBox>
-    </macros:Page>
-
+    </Page>
 </mvc:View>
