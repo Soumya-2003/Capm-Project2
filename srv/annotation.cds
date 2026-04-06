@@ -1,16 +1,16 @@
 using {EventService} from './event-service';
 
 annotate EventService.Event with {
-    eventName       @Common.Label       : 'Event Name';
-    eventDate       @Common.Label       : 'Event Date';
-    startTime       @Common.Label       : 'Start Time';
-    endTime         @Common.Label       : 'End Time';
-    venue           @Common.Label       : 'Venue';
-    free            @Common.Label       : 'Free';
-    description     @Common.Label       : 'Description';
-    maxParticipants @Common.Label       : 'Total Registrations';
-    status          @Common.Label       : 'Status';
-    rating          @Common.Label       : 'Rating';
+    eventName       @Common.Label: 'Event Name';
+    eventDate       @Common.Label: 'Event Date';
+    startTime       @Common.Label: 'Start Time';
+    endTime         @Common.Label: 'End Time';
+    venue           @Common.Label: 'Venue';
+    free            @Common.Label: 'Free';
+    description     @Common.Label: 'Description';
+    maxParticipants @Common.Label: 'Total Registrations';
+    status          @Common.Label: 'Status';
+    rating          @Common.Label: 'Rating';
     budget          @Common.Label: 'Budget';
     // budget          @Aggregation.default: #SUM;
     organizer       @(
@@ -45,17 +45,16 @@ annotate EventService.Event with {
 
 
 annotate EventService.Event with @(UI: {
-    LineItem           : {
+    LineItem : {
         // ![@UI.Criticality]: criticality,
-        $value            : [
+        $value: [
             {Value: eventName},
             {Value: venue},
             {Value: maxParticipants},
             // {Value: status},
             {Value: free},
             {Value: budget}
-        ]
-    },
+    ]},
 
     PresentationVariant: {
         $Type         : 'UI.PresentationVariantType',
@@ -70,6 +69,9 @@ annotate EventService.Event with @(UI: {
 
 
 annotate EventService.Event with @odata.draft.bypass;
+annotate EventService.Event with @Common.SideEffects: {
+    TargetProperties: ['registrations']
+};
 
 
 annotate EventService.Event with {
@@ -103,6 +105,44 @@ annotate EventService.Event with @UI.HeaderInfo: {
         Value: venue
     }
 };
+
+annotate EventService.Event with @UI.Identification: [
+    {
+        $Type : 'UI.DataFieldForAction',
+        Action: 'EventService.closeEvent',
+        Label : 'Close Event',
+        // InvocationGrouping: #ChangeSet,
+        // CriticalAction: true,
+        // RequiresConfirmation: true,
+        // ConfirmationMessage: 'Are you sure you want to close this event?',
+        ![@UI.Hidden]: {$edmJson: {$Eq: [
+            {$Path: 'registrations'},
+            'Closed'
+        ]}}
+    },
+    {
+        $Type : 'UI.DataFieldForAction',
+        Action: 'EventService.openEvent',
+        Label : 'Open Event',
+        // InvocationGrouping: #ChangeSet,
+        // CriticalAction: true,
+        // RequiresConfirmation: true,
+        // ConfirmationMessage: 'Do you want to reopen this event?',
+        ![@UI.Hidden]: {$edmJson: {$Ne: [
+            {$Path: 'registrations'},
+            'Closed'
+        ]}}
+    },
+
+    {
+        $Type : 'UI.DataFieldForAction',
+        Action: 'EventService.rateEvent',
+        Label : 'Rate Event',
+        // InvocationGrouping: #ChangeSet,
+        // RequiresConfirmation: true,
+        // CriticalAction: true
+    }
+];
 
 annotate EventService.Event with @UI.HeaderFacets: [
     {
@@ -189,13 +229,13 @@ annotate EventService.Event with @UI.Facets: [
         $Type : 'UI.ReferenceFacet',
         Label : 'General Information',
         Target: '@UI.FieldGroup#General'
-        // ![@UI.PartOfPreview]: false
+    // ![@UI.PartOfPreview]: false
     },
     {
         $Type : 'UI.ReferenceFacet',
         Label : 'Schedule',
         Target: '@UI.FieldGroup#Schedule'
-        // ![@UI.PartOfPreview]: false
+    // ![@UI.PartOfPreview]: false
     }
 ];
 
@@ -250,7 +290,10 @@ annotate EventService.Event with @UI.FieldGroup #General: {
             Value: tags.tag,
             Label: 'Tags'
         },
-        {Value: budget, ![@UI.PartOfPreview]: false}
+        {
+            Value               : budget,
+            ![@UI.PartOfPreview]: false
+        }
     ]
 };
 

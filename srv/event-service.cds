@@ -3,7 +3,12 @@ using event.management as em from '../db/event-schema';
 service EventService {
     @odata.draft.enabled
     @Analytics.query: true
-    entity Event as projection on em.Events;
+    entity Event as projection on em.Events actions {
+
+        action closeEvent() returns Event;
+        action openEvent() returns Event;
+        action rateEvent(rating : Integer @Common.Label: 'Rating') returns Event;
+    };
 
     entity EventTags as projection on em.EventTags;
 

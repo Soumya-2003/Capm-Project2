@@ -1,0 +1,1 @@
+{"version":3,"file":"ViewController.js","names":["sap","ui","define","MessageToast","viewLogs","oContext","aSelectedContexts","show"],"sources":["ViewController-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CACV,sBACD,SAASC,GACR,aAEA,MAAO,CAOHC,SAAU,SAASC,EAAUC,GACzBH,EAAaI,KAAK,yBACtB,EAER","ignoreList":[]}

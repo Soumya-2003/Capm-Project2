@@ -1,0 +1,22 @@
+<mvc:View
+    controllerName="eventproject.controller.OverviewPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:macros="sap.fe.macros"
+    xmlns="sap.m"
+>
+    <Page>
+        <VBox height="400px">
+            <macros:Table
+                id="EventTable"
+                metaPath="@com.sap.vocabularies.UI.v1.LineItem"
+                contextPath="/Event"
+            />
+        </VBox>
+
+        <Button
+            text="Click Me"
+            press="clickMeButtonPress"
+        />
+
+    </Page>
+</mvc:View>

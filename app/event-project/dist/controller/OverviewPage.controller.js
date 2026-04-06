@@ -1,0 +1,2 @@
+sap.ui.define(["sap/fe/core/PageController","sap/m/MessageToast"],function(e,t){"use strict";return e.extend("eventproject.controller.OverviewPage",{onInit:function(){e.prototype.onInit.apply(this,arguments)},clickMeButtonPress:function(){t.show("Button Clicked")}})});
+//# sourceMappingURL=OverviewPage.controller.js.map

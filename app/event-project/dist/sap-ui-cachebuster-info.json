@@ -1,0 +1,17 @@
+{
+  "manifest.json": 1775045420480,
+  "ext/controller/ViewController.js": 1775034643817,
+  "controller/OverviewPage.controller.js": 1775045856706,
+  "i18n/i18n.properties": 1775034643817,
+  "Component.js": 1775045128558,
+  "Component-dbg.js": 1775045128558,
+  "Component.js.map": 1775367522213,
+  "controller/OverviewPage-dbg.controller.js": 1775045856706,
+  "controller/OverviewPage.controller.js.map": 1775367522211,
+  "ext/controller/ViewController-dbg.js": 1775034643817,
+  "ext/controller/ViewController.js.map": 1775367522211,
+  "Component-preload.js": 1775367522290,
+  "Component-preload.js.map": 1775367522290,
+  "view/OverviewPage.view.xml": 1775195741853,
+  "index.html": 1775034643817
+}
