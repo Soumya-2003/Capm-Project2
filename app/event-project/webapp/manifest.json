@@ -177,6 +177,12 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Event",
+              "inlineEdit": {
+                "enabledFields": [
+                  "description",
+                  "maxParticipants"
+                ]
+              },
               "navigation": {
                 "tags": {
                   "detail": {
